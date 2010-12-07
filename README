@@ -4,7 +4,14 @@ update-archives which loops through the directories in my
 ~/lisp/monkeylib/ directory. Each of those directories is a git
 repository of one of my libraries. If the library has changed since
 update-archives was last run, it makes a new archive under the
-archives/ directory here. It also creates a file archives/current.txt
-with a list of each of libraries and its latest version. That
-information can be used to create the monkeylib.dist file which is the
-input to the quicklisp-distcompiler.
+archives/ directory (which it will create if necessary). It also
+creates a file archives/current.txt with a list of each of libraries
+and its latest version. That information can be used to create the
+monkeylib.dist file which is the input to the quicklisp-distcompiler.
+
+Once the archives/ directory has been populated and the monkeylib.dist
+file created, COMPILE-DIST from quicklisp-distcompiler compiles it
+into a directory containing the three .txt files quicklisp needs,
+gathering dependency information automatically. Then I just need to
+push archives/ and monkeylib/ to somewhere where they will be served
+up under the url specified in monkeylib.dist's :base-url value.
