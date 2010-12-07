@@ -1,0 +1,8 @@
+#!/bin/sh
+
+distinfo=$1
+
+mkdir -p ~/quicklisp/dists/monkeylib/
+cp $distinfo ~/quicklisp/dists/monkeylib/
+touch ~/quicklisp/dists/monkeylib/enabled.txt
+echo 42 > ~/quicklisp/dists/monkeylib/preference.txt
